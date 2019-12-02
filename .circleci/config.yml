@@ -55,7 +55,7 @@ jobs:
       - run:
           name: Deploy app
           command: |
-            npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN
+            npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --dir=/tmp/server-doc
   back-test-unit:
     docker:
       - image: circleci/node:dubnium-browsers
