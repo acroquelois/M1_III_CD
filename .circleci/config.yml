@@ -48,14 +48,14 @@ jobs:
   server-doc-deploy:
     docker:
       - image: circleci/node:dubnium-browsers
-    working_directory: ~/deploy-doc-server
+    working_directory: ~/repo
     steps:
       - attach_workspace:
-          at: /tmp
+          at: /tmp/server-doc
       - run:
           name: Deploy app
-          command: | 
-            deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN
+          command: |
+            npx netlify-cli deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN
   back-test-unit:
     docker:
       - image: circleci/node:dubnium-browsers
