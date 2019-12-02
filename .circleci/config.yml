@@ -51,7 +51,7 @@ jobs:
     working_directory: ~/deploy-doc-server
     steps:
       - attach_workspace:
-          at: /tmp/server-doc
+          at: /tmp
       - run:
           name: Deploy app
           command: |
