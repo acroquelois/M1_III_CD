@@ -63,7 +63,14 @@ jobs:
       - checkout
       - restore_cache:
           key: dependencies-{{ checksum "package.json" }}-{{ .Environment.CACHE_VERSION }}
-      - run: yarn test:ci
+      - run:
+          command: yarn test:ci
+          environment:
+            DATABASE_URL: postgres://psqluer:psqlpassword@localhost:5432/psqluer
+            JWT_SECRET: aaaa
+            API_PORT: 3000
+            API_HOST: localhost
+            API_PROTOCOL: http
       - run: yarn add codecov && yarn codecov
   back-test-e2e:
     docker:
